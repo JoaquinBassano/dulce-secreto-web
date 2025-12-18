@@ -1,0 +1,62 @@
+---
+import Button from '../ui/Button.astro';
+import { Image } from 'astro:assets';
+
+import logoImage from '../../assets/dulce-secreto-logo.webp';
+---
+
+<section
+  class='flex min-h-[90vh] flex-col items-center justify-center bg-brand-white px-4 py-16 relative overflow-hidden'
+>
+  <div
+    class='absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-muted/10 to-transparent pointer-events-none'
+  >
+  </div>
+
+  <div class='mx-auto max-w-4xl text-center relative z-10'>
+    <div class='mb-8 flex justify-center'>
+      <div class='relative h-48 w-48 md:h-64 md:w-64'>
+        <Image
+          src={logoImage}
+          alt='Logo de Dulce Secreto'
+          class='object-contain w-full h-full'
+          width={256}
+          height={256}
+          loading='eager'
+        />
+      </div>
+    </div>
+
+    <h1
+      class='mb-6 font-serif text-5xl font-bold text-brand-primary md:text-6xl lg:text-7xl tracking-tight'
+    >
+      Dulce Secreto
+    </h1>
+
+    <p
+      class='mb-10 text-balance text-xl text-brand-primary/80 md:text-2xl font-light max-w-2xl mx-auto'
+    >
+      Pastelería artesanal en Arroyito. <br class='hidden md:block' />
+      El sabor del secreto casero en cada detalle.
+    </p>
+
+    <div id='hero-cta-container'>
+      <Button
+        size='lg'
+        className='text-lg px-8 shadow-xl hover:scale-105 transition-transform duration-300'
+      >
+        Ver Nuestras Creaciones
+      </Button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const container = document.getElementById('hero-cta-container');
+  container?.addEventListener('click', () => {
+    const section = document.getElementById('creaciones');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
