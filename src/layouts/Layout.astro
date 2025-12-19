@@ -16,10 +16,10 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 <html lang='es'>
   <head>
     <BaseHead title={title} description={description} />
+    <Analytics />
   </head>
   <body>
     <slot />
-    <Analytics />
     <script src='../scripts/main.ts'></script>
   </body>
 </html>
