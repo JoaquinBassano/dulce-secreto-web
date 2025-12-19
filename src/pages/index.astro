@@ -1,83 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, BUSINESS_INFO, CONTACT, WHATSAPP_MESSAGES } from '../config';
+
+import Hero from '../components/landing/Hero.astro';
+import ProductsSection from '../components/landing/ProductsSection.astro';
+import Footer from '../components/landing/Footer.astro';
 ---
 
 <Layout>
-  <h1 class='text-4xl font-serif font-bold text-brand-primary mb-8'>
-    Dulce Secreto Palette
-  </h1>
+  <main class='min-h-screen'>
+    <Hero siteTitle={SITE_TITLE} siteDescription={SITE_DESCRIPTION} />
+    <ProductsSection contact={CONTACT} whatsappMessages={WHATSAPP_MESSAGES} />
+    <Footer businessInfo={BUSINESS_INFO} contact={CONTACT} />
+  </main>
 
-  <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
-    <!-- Primary Color -->
-    <div class='space-y-2'>
-      <div
-        class='h-32 w-full rounded-lg shadow-md bg-brand-primary flex items-center justify-center'
-      >
-        <span class='text-brand-white font-mono'>brand-primary</span>
-      </div>
-      <div class='flex justify-between items-center'>
-        <h2 class='text-xl font-bold text-brand-primary'>Eggplant Purple</h2>
-        <span class='text-brand-muted font-mono text-sm'>#2B252C</span>
-      </div>
-      <p class='text-brand-secondary'>Used for text and dark backgrounds.</p>
-    </div>
-
-    <!-- Secondary Color -->
-    <div class='space-y-2'>
-      <div
-        class='h-32 w-full rounded-lg shadow-md bg-brand-secondary flex items-center justify-center'
-      >
-        <span class='text-white font-mono'>brand-secondary</span>
-      </div>
-      <div class='flex justify-between items-center'>
-        <h2 class='text-xl font-bold text-brand-primary'>Petrol Green</h2>
-        <span class='text-brand-muted font-mono text-sm'>#2E484C</span>
-      </div>
-      <p class='text-brand-secondary'>Used for accents and borders.</p>
-    </div>
-
-    <!-- Muted Color -->
-    <div class='space-y-2'>
-      <div
-        class='h-32 w-full rounded-lg shadow-md bg-brand-muted flex items-center justify-center'
-      >
-        <span class='text-brand-primary font-mono'>brand-muted</span>
-      </div>
-      <div class='flex justify-between items-center'>
-        <h2 class='text-xl font-bold text-brand-primary'>Steel Gray</h2>
-        <span class='text-brand-muted font-mono text-sm'>#AAB0B3</span>
-      </div>
-      <p class='text-brand-secondary'>Used for details and secondary text.</p>
-    </div>
-
-    <!-- White Color -->
-    <div class='space-y-2'>
-      <div
-        class='h-32 w-full rounded-lg shadow-md bg-brand-white border border-brand-muted flex items-center justify-center'
-      >
-        <span class='text-brand-primary font-mono'>brand-white</span>
-      </div>
-      <div class='flex justify-between items-center'>
-        <h2 class='text-xl font-bold text-brand-primary'>Bone White</h2>
-        <span class='text-brand-muted font-mono text-sm'>#FFFFFF</span>
-      </div>
-      <p class='text-brand-secondary'>Used for main backgrounds.</p>
-    </div>
-  </div>
-
-  <div class='mt-16 p-8 bg-brand-primary rounded-xl text-brand-white'>
-    <h2 class='text-3xl font-serif mb-4'>Typography Test</h2>
-    <p class='mb-4'>
-      This is a paragraph using the default sans-serif font (Inter). It should
-      be legible and clean.
-      <span class='text-brand-muted'>This text is in the muted color.</span>
-    </p>
-    <h3 class='text-2xl font-serif text-brand-muted mb-2'>
-      Serif Heading (Playfair Display)
-    </h3>
-    <p class='font-serif text-lg'>
-      This paragraph uses the serif font, recommended for a more elegant,
-      pastry-shop feel.
-    </p>
-  </div>
+  <script>
+    // Smooth scroll to products
+    const scrollBtn = document.getElementById('scroll-to-products');
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', () => {
+        const element = document.getElementById('products');
+        element?.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  </script>
 </Layout>

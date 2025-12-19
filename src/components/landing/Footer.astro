@@ -1,5 +1,10 @@
 ---
-// Footer component for the landing page
+interface Props {
+  businessInfo: typeof import('../../config').BUSINESS_INFO;
+  contact: typeof import('../../config').CONTACT;
+}
+
+const { businessInfo, contact } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -11,7 +16,7 @@ const currentYear = new Date().getFullYear();
         <h3 class='mb-4 font-serif text-xl font-bold text-white'>
           Información
         </h3>
-        <p class='mb-2 leading-relaxed'>📍 Tránsito, Córdoba</p>
+        <p class='mb-2 leading-relaxed'>📍 {businessInfo.location}</p>
         <p class='leading-relaxed'>⏰ Pedidos con 24hs de anticipación</p>
       </div>
 
@@ -20,8 +25,8 @@ const currentYear = new Date().getFullYear();
         <h3 class='mb-4 font-serif text-xl font-bold text-white'>
           Retiro y Envíos
         </h3>
-        <p class='mb-2 leading-relaxed'>🏪 Retiro en Tránsito</p>
-        <p class='leading-relaxed'>🚗 Envíos a Arroyito y Tránsito</p>
+        <p class='mb-2 leading-relaxed'>🏪 Retiro en {businessInfo.delivery.pickup}</p>
+        <p class='leading-relaxed'>🚗 Envíos a {businessInfo.delivery.shipping}</p>
       </div>
 
       <!-- Social Links -->
@@ -29,7 +34,7 @@ const currentYear = new Date().getFullYear();
         <h3 class='mb-4 font-serif text-xl font-bold text-white'>Síguenos</h3>
         <div class='flex gap-6 justify-center sm:justify-start'>
           <a
-            href='https://www.instagram.com/dulcesecreto.bakery/'
+            href={contact.instagram}
             target='_blank'
             rel='noopener noreferrer'
             class='text-brand-muted transition-colors hover:text-white hover:scale-110 transform duration-200'
@@ -47,7 +52,7 @@ const currentYear = new Date().getFullYear();
             </svg>
           </a>
           <a
-            href='https://www.facebook.com/profile.php?id=61579804653264'
+            href={contact.facebook}
             target='_blank'
             rel='noopener noreferrer'
             class='text-brand-muted transition-colors hover:text-white hover:scale-110 transform duration-200'
@@ -71,7 +76,7 @@ const currentYear = new Date().getFullYear();
     <!-- Copyright -->
     <div class='border-t border-brand-secondary pt-8 text-center'>
       <p class='text-sm'>
-        © {currentYear} Dulce Secreto. Todos los derechos reservados.
+        © {currentYear} {businessInfo.name}. Todos los derechos reservados.
       </p>
     </div>
   </div>

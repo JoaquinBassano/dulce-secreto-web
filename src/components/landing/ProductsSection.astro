@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  contact: typeof import('../../config').CONTACT;
+  whatsappMessages: typeof import('../../config').WHATSAPP_MESSAGES;
+}
+
+const { contact, whatsappMessages } = Astro.props;
+
+let products: CollectionEntry<'products'>[] = [];
+let hasError = false;
+
+try {
+  const allProducts = await getCollection('products');
+  products = allProducts.sort((a, b) => a.data.order - b.data.order);
+} catch (error) {
+  console.error('Error loading products:', error);
+  hasError = true;
+}
+---
+
+<section id='products' class='bg-white px-4 py-16'>
+  <div class='mx-auto max-w-7xl'>
+    <h2
+      class='mb-12 text-center font-serif text-4xl font-bold text-brand-primary md:text-5xl'
+    >
+      Nuestras Creaciones
+    </h2>
+
+    {hasError ? (
+      <div class='text-center py-12'>
+        <p class='text-gray-600'>Lo sentimos, no pudimos cargar los productos en este momento.</p>
+      </div>
+    ) : products.length === 0 ? (
+      <div class='text-center py-12'>
+        <p class='text-gray-600'>Próximamente agregaremos nuestros productos.</p>
+      </div>
+    ) : (
+      <!-- Product Grid -->
+      <div class='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
+        {
+          products.map(({ data: { name, description, price, image } }) => (
+            <ProductCard
+              name={name}
+              description={description}
+              price={price}
+              image={image}
+              contact={contact}
+              whatsappMessages={whatsappMessages}
+            />
+          ))
+        }
+      </div>
+    )}
+  </div>
+</section>
