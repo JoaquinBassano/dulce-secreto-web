@@ -20,7 +20,7 @@ const { siteTitle, siteDescription } = Astro.props;
   >
   </div>
 
-  <div class='mx-auto max-w-4xl text-center relative z-10'>
+  <div class='mx-auto max-w-4xl text-center relative z-10 animate-fade-in-down'>
     <div class='mb-8 flex justify-center'>
       <div class='relative h-48 w-48 md:h-64 md:w-64'>
         <Image
@@ -56,13 +56,3 @@ const { siteTitle, siteDescription } = Astro.props;
     </div>
   </div>
 </section>
-
-<script>
-  const container = document.getElementById('hero-cta-container');
-  container?.addEventListener('click', () => {
-    const section = document.getElementById('products');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-</script>

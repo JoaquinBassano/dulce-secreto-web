@@ -13,15 +13,4 @@ import Footer from '../components/landing/Footer.astro';
     <ProductsSection contact={CONTACT} />
     <Footer businessInfo={BUSINESS_INFO} contact={CONTACT} />
   </main>
-
-  <script>
-    // Smooth scroll to products
-    const scrollBtn = document.getElementById('scroll-to-products');
-    if (scrollBtn) {
-      scrollBtn.addEventListener('click', () => {
-        const element = document.getElementById('products');
-        element?.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
-  </script>
 </Layout>

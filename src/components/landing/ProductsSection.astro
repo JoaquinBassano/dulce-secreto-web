@@ -40,16 +40,18 @@ try {
       </div>
     ) : (
       <!-- Product Grid -->
-      <div class='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
+      <div class='grid gap-8 md:grid-cols-2 lg:grid-cols-3' id='products-grid'>
         {
-          products.map(({ data: { name, description, price, image } }) => (
-            <ProductCard
-              name={name}
-              description={description}
-              price={price}
-              image={image}
-              contact={contact}
-            />
+          products.map(({ data: { name, description, price, image } }, index) => (
+            <div class='product-card opacity-0' style={`animation-delay: ${index * 100}ms`}>
+              <ProductCard
+                name={name}
+                description={description}
+                price={price}
+                image={image}
+                contact={contact}
+              />
+            </div>
           ))
         }
       </div>

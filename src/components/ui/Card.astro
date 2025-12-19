@@ -7,7 +7,7 @@ const { class: className = '' } = Astro.props;
 ---
 
 <div
-  class={`overflow-hidden border-2 border-brand-secondary bg-white shadow-lg transition-shadow hover:shadow-xl rounded-lg ${className}`}
+  class={`overflow-hidden border-2 border-brand-secondary bg-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 rounded-lg flex flex-col h-full ${className}`}
 >
   <slot />
 </div>
