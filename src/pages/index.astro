@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, BUSINESS_INFO, CONTACT, WHATSAPP_MESSAGES } from '../config';
+import { SITE_TITLE, SITE_DESCRIPTION, BUSINESS_INFO, CONTACT } from '../config';
 
 import Hero from '../components/landing/Hero.astro';
 import ProductsSection from '../components/landing/ProductsSection.astro';
@@ -10,7 +10,7 @@ import Footer from '../components/landing/Footer.astro';
 <Layout>
   <main class='min-h-screen'>
     <Hero siteTitle={SITE_TITLE} siteDescription={SITE_DESCRIPTION} />
-    <ProductsSection contact={CONTACT} whatsappMessages={WHATSAPP_MESSAGES} />
+    <ProductsSection contact={CONTACT} />
     <Footer businessInfo={BUSINESS_INFO} contact={CONTACT} />
   </main>
 

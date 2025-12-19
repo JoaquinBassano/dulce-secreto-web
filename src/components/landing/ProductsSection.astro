@@ -6,10 +6,9 @@ import ProductCard from './ProductCard.astro';
 
 interface Props {
   contact: typeof import('../../config').CONTACT;
-  whatsappMessages: typeof import('../../config').WHATSAPP_MESSAGES;
 }
 
-const { contact, whatsappMessages } = Astro.props;
+const { contact } = Astro.props;
 
 let products: CollectionEntry<'products'>[] = [];
 let hasError = false;
@@ -50,7 +49,6 @@ try {
               price={price}
               image={image}
               contact={contact}
-              whatsappMessages={whatsappMessages}
             />
           ))
         }

@@ -10,10 +10,9 @@ interface Props {
   price: number;
   image: ImageMetadata;
   contact: typeof import('../../config').CONTACT;
-  whatsappMessages: typeof import('../../config').WHATSAPP_MESSAGES;
 }
 
-const { name, description, price, image, contact, whatsappMessages } = Astro.props;
+const { name, description, price, image, contact } = Astro.props;
 ---
 
 <Card>
@@ -61,14 +60,14 @@ const { name, description, price, image, contact, whatsappMessages } = Astro.pro
   </div>
 </Card>
 
-<script define:vars={{ whatsappNumber: contact.whatsapp, messageTemplate: whatsappMessages.productInquiry }}>
+<script define:vars={{ whatsappNumber: contact.whatsapp }}>
   // WhatsApp link for this card
   document.addEventListener('DOMContentLoaded', () => {
     const whatsappBtns = document.querySelectorAll('.whatsapp-btn');
     whatsappBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         const productName = btn.getAttribute('data-product');
-        const message = encodeURIComponent(messageTemplate(productName));
+        const message = encodeURIComponent(`Hola! Me interesa pedir: ${productName}`);
         window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
       });
     });

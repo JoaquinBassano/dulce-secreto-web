@@ -20,8 +20,3 @@ export const CONTACT = {
   facebook: 'https://www.facebook.com/profile.php?id=61579804653264'
 } as const;
 
-// WhatsApp message templates
-export const WHATSAPP_MESSAGES = {
-  productInquiry: (productName: string) =>
-    `Hola! Me interesa pedir: ${productName}`
-} as const;
